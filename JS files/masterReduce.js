@@ -14,7 +14,10 @@ export function filterFnR(arr, callback) {
 }
 
 export function everyFnR(arr, callback) {
-  return arr.reduce((element) => (callback(element) ? true : false));
+  return arr.reduce(
+    (init, element) => (callback(element) ? init : false),
+    true
+  );
 }
 
 export function someFnR(arr, callback) {

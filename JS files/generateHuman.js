@@ -10,6 +10,7 @@ const countries = ['PL', 'UK', 'USA'];
 
 export function generateHuman() {
   function Human() {
+    this.id = uuidv4();
     this.name = randomName();
     this.surname = randomSurname();
     this.email =

@@ -34,7 +34,5 @@ export function aggregateIntoChunks(array) {
     }
   }
 
-  console.log(newArray);
-
   return newArray;
 }
