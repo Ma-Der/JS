@@ -23,6 +23,7 @@ import {
   everyFnR,
   someFnR,
 } from './JS files/masterReduce.js';
+import { paginateArray } from './JS files/paginateArray.js';
 
 // start ARRAY-INTO-CHUNKS assignment
 
@@ -108,3 +109,12 @@ console.log(everyFnR([1, 2, 3, 4], (x) => x == 2));
 console.log(someFnR([2, 3, 1], (x) => typeof x == 'string'));
 
 //end MASTER-REDUCE assignment
+
+// start PAGINATE-ARRAY assignment
+
+const dataPagination = 'Lorem Ipsum has been the industrys standard dummy text ever since the There are many variations of passages of Lorem Ipsum available All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary It uses a dictionary of over 200 Latin words'.split(" ");
+
+const settings={paginateArrayIdx: 1, entriesOnPage: 20};
+console.log(paginateArray(dataPagination, settings));
+
+// end PAGINATE-ARRAY assignment
