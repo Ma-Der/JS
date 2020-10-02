@@ -34,7 +34,7 @@ console.log(aggregateIntoChunks(alphabet));
 
 // start ARRAY-METHODS assignment
 
-const numbers = [1, 2, 4, 5, 3];
+const numbers = [1, 2, 3, 4, 5, 34, 2];
 const numbers2 = [
   [1, 2],
   [3, 4],
@@ -47,9 +47,9 @@ console.log(filterFn(numbers, (el) => el > 3));
 
 console.log(everyFn(numbers, (el) => el % 2 == 0));
 
-console.log(reduceFn(numbers, (initial, el) => initial + el, 2));
+console.log(reduceFn(numbers, (a, b) => a + b, 3));
 
-console.log(reduceRightFn(numbers2, (initial, el) => initial.concat(el), []));
+console.log(reduceRightFn(numbers2, (a, b) => a.concat(b), []));
 
 console.log(someFn(numbers, (el) => el === 1));
 
@@ -112,9 +112,11 @@ console.log(someFnR([2, 3, 1], (x) => typeof x == 'string'));
 
 // start PAGINATE-ARRAY assignment
 
-const dataPagination = 'Lorem Ipsum has been the industrys standard dummy text ever since the There are many variations of passages of Lorem Ipsum available All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary It uses a dictionary of over 200 Latin words'.split(" ");
+const dataPagination = 'Lorem Ipsum has been the industrys standard dummy text ever since the There are many variations of passages of Lorem Ipsum available All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary It uses a dictionary of over 200 Latin words'.split(
+  ' '
+);
 
-const settings={paginateArrayIdx: 1, entriesOnPage: 20};
+const settings = { paginateArrayIdx: 1, entriesOnPage: 20 };
 console.log(paginateArray(dataPagination, settings));
 
 // end PAGINATE-ARRAY assignment

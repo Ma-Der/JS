@@ -9,42 +9,32 @@ const names = 'Ada, Adela, Adelajda, Adrianna, Agata, Agnieszka, Aldona, Aleksan
 const countries = ['PL', 'UK', 'USA'];
 
 export function generateHuman() {
-  function Human() {
-    this.id = uuidv4();
-    this.name = randomName();
-    this.surname = randomSurname();
-    this.email =
-      this.name.toLowerCase() + '.' + this.surname.toLowerCase() + '@mail.com';
-    this.age = randomNumber(18, 85);
-    this.phoneNr = randomPhoneNumber();
-    this.country = randomCountry();
-  }
-
   function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  function randomPhoneNumber() {
-    let arr = [];
+  function randomPhoneNumber(array) {
     for (let i = 0; i < 9; i++) {
-      arr[i] = randomNumber(0, 9);
+      array.push(randomNumber(0, 9));
     }
-    return arr.join('');
+    return array.join('');
   }
 
-  function randomSurname() {
-    let num = randomNumber(0, surnames.length - 1);
-    return surnames[num];
-  }
+  const getRandomElementFromArray = (array) => {
+    let num = randomNumber(0, array.length - 1);
+    return array[num];
+  };
 
-  function randomName() {
-    let num = randomNumber(0, names.length - 1);
-    return names[num];
-  }
-
-  function randomCountry() {
-    let num = randomNumber(0, countries.length - 1);
-    return countries[num];
-  }
-  return new Human();
+  const human = {
+    id: uuidv4(),
+    name: getRandomElementFromArray(names),
+    surname: getRandomElementFromArray(surnames),
+    get email() {
+      return `${this.name.toLowerCase()}.${this.surname.toLowerCase()}@mail.com`;
+    },
+    age: randomNumber(18, 85),
+    phoneNr: randomPhoneNumber([]),
+    country: getRandomElementFromArray(countries),
+  };
+  return JSON.stringify(human);
 }

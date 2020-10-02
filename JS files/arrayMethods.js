@@ -1,61 +1,129 @@
 // mapFn
 
 export function mapFn(array, callback) {
-  let newArray = [];
-  for (let i = 0; i < array.length; i++) {
-    let newElement = callback(array[i], i, array);
-    newArray.push(newElement);
-  }
-  return newArray;
+  if (Array.isArray(array) && typeof callback === 'function') {
+    let newArray = [];
+    for (let i = 0; i < array.length; i++) {
+      let newElement = callback(array[i], i, array);
+      newArray.push(newElement);
+    }
+    return newArray;
+  } else
+    throw new Error(
+      'First argument should be an array and second argument should be a function'
+    );
 }
 
 // filterFn
 
 export function filterFn(array, callback) {
-  const filteredArray = [];
-  for (let i = 0; i < array.length; i++) {
-    if (callback(array[i], i, array)) {
-      filteredArray.push(array[i]);
+  if (Array.isArray(array) && typeof callback === 'function') {
+    const filteredArray = [];
+    for (let i = 0; i < array.length; i++) {
+      if (callback(array[i], i, array)) {
+        filteredArray.push(array[i]);
+      }
     }
-  }
-  return filteredArray;
+    return filteredArray;
+  } else
+    throw new Error(
+      'First argument should be an array and second argument should be a function'
+    );
 }
 
 // everyFn
 
 export function everyFn(array, callback) {
-  for (let i = 0; i < array.length; i++) {
-    if (callback(array[i], i, array)) {
-      return true;
-    } else return false;
+  if (typeof callback === 'function' && Array.isArray(array)) {
+    let bool = true;
+    for (let i = 0; i < array.length; i++) {
+      if (callback(array[i], i, array)) {
+        bool = true;
+      } else {
+        bool = false;
+        break;
+      }
+    }
+    return bool;
+  } else if (!Array.isArray(array) && !(callback === 'function')) {
+    throw new Error(
+      '1st variable needs to be an array, 2nd variable must be a function.'
+    );
   }
 }
 
 // reduceFn
 
-export function reduceFn(array, callback, initial = 0) {
-  for (let i = 0; i < array.length; i++) {
-    initial = callback(initial, array[i], i, array);
+export function reduceFn(array, callback, initial) {
+  if (typeof callback === 'function' && Array.isArray(array)) {
+    let prevVal = null;
+    if (typeof initial !== 'undefined') {
+      prevVal = initial;
+      if (array.length == 0) {
+        return prevVal;
+      }
+      for (let i = 0; i < array.length; i++) {
+        prevVal = callback(prevVal, array[i], i, array);
+      }
+      return prevVal;
+    } else {
+      if (array.length == 0) {
+        throw TypeError('Array is empty.');
+      }
+      for (let i = 0; i < array.length; i++) {
+        prevVal = callback(prevVal, array[i], i, array);
+      }
+      return prevVal;
+    }
+  } else if (!Array.isArray(array) && !(callback === 'function')) {
+    throw new Error(
+      '1st variable needs to be an array, 2nd variable must be a function.'
+    );
   }
-  return initial;
 }
 
 // reduceRightFn
 
-export function reduceRightFn(array, callback, initial = 0) {
-  for (let i = array.length - 1; i >= 0; i--) {
-    initial = callback(initial, array[i], i, array);
+export function reduceRightFn(array = array.reverse(), callback, initial) {
+  if (typeof callback === 'function' && Array.isArray(array)) {
+    let prevVal = null;
+    if (typeof initial !== 'undefined') {
+      prevVal = initial;
+      if (array.length == 0) {
+        return prevVal;
+      }
+      for (let i = 0; i < array.length; i++) {
+        prevVal = callback(prevVal, array[i], i, array);
+      }
+      return prevVal;
+    } else {
+      if (array.length == 0) {
+        throw TypeError('Array is empty.');
+      }
+      for (let i = 0; i < array.length; i++) {
+        prevVal = callback(prevVal, array[i], i, array);
+      }
+      return prevVal;
+    }
+  } else if (!Array.isArray(array) && !(callback === 'function')) {
+    throw new Error(
+      '1st variable needs to be an array, 2nd variable must be a function.'
+    );
   }
-  return initial;
 }
 
 // someFn
 
 export function someFn(array, callback) {
-  for (let i = 0; i < array.length; i++) {
-    if (callback(array[i], i, array)) {
-      return true;
+  if (Array.isArray(array) && typeof callback === 'function') {
+    for (let i = 0; i < array.length; i++) {
+      if (callback(array[i], i, array)) {
+        return true;
+      }
     }
-  }
-  return false;
+    return false;
+  } else
+    throw new Error(
+      'First argument should be an array and second argument should be a function'
+    );
 }
