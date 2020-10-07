@@ -1,10 +1,19 @@
+function isValidDate(date) {
+  return (
+    date &&
+    Object.prototype.toString.call(date) === '[object Date]' &&
+    !isNaN(date.getTime())
+  );
+}
 export function getMyAge(input) {
   let actualYear = new Date().getFullYear();
-  if (typeof input === 'object') {
-    return actualYear - input.getFullYear();
-  } else if (typeof input === 'number') {
+  if (typeof input === 'number') {
     return actualYear - input;
-  } else if (typeof input === 'string') {
+  }
+  if (typeof input === 'string') {
     return actualYear - parseInt(input);
   }
+  if (isValidDate(input)) {
+    return actualYear - input.getFullYear();
+  } else throw new Error('Invalid date');
 }

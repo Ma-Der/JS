@@ -87,7 +87,7 @@ console.log(generateHuman('Oleg', 'Owen'));
 
 //start GET-MY-AGE assignment
 
-console.log(getMyAge(new Date(1984, 5, 5)));
+console.log(getMyAge(new Date(1984, 4, 3)));
 console.log(getMyAge(1984));
 console.log(getMyAge('1984'));
 
@@ -116,7 +116,7 @@ const dataPagination = 'Lorem Ipsum has been the industrys standard dummy text e
   ' '
 );
 
-const settings = { paginateArrayIdx: 1, entriesOnPage: 20 };
+const settings = { paginateArrayIdx: 1, entriesOnPage: 3 };
 console.log(paginateArray(dataPagination, settings));
 
 // end PAGINATE-ARRAY assignment
