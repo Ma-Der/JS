@@ -95,7 +95,7 @@ console.log(getMyAge('1984'));
 
 //start IS-RECTANGULAR-TRIANGLE assignment
 
-console.log(isRectangularTriangle(4, 3, 5));
+console.log(isRectangularTriangle(3, 5, 4));
 
 //end IS-RECTANGULAR-TRIANGLE assignment
 
