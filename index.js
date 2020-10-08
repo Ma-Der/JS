@@ -75,7 +75,7 @@ findPhraseInArray(inputData, 'as');
 
 console.log(generateArrayWithRandomNumbers(15, 5, 20));
 
-console.log(generateArrayOfArrays());
+console.log(generateArrayOfArrays(3, 5, 4, 70));
 
 //end GENERATE-ARRAY-WITH-RANDOM-NUMBERS assignment
 
@@ -105,7 +105,7 @@ console.log(mapFnR([5, 2, 1], (x) => x + x));
 
 console.log(filterFnR([1, 2, 3, 4], (x) => x > 2));
 
-console.log(everyFnR([1, 2, 3, 4], (x) => x == 2));
+console.log(everyFnR([1, 2, 3, 4], (x) => x > 0));
 console.log(someFnR([2, 3, 1], (x) => typeof x == 'string'));
 
 //end MASTER-REDUCE assignment

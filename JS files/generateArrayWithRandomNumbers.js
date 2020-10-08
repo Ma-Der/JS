@@ -3,11 +3,19 @@ export function generateArrayWithRandomNumbers(
   min = 1,
   max = 10
 ) {
-  const arr = [];
-  for (let i = 0; i < howManyNumbers; i++) {
-    arr[i] = Math.floor(Math.random() * (max - min + 1) + min);
-  }
-  return arr;
+  if (
+    typeof howManyNumbers === 'number' &&
+    typeof min === 'number' &&
+    typeof max === 'number' &&
+    !isNaN(howManyNumbers) &&
+    !isNaN(min) &&
+    !isNaN(max)
+  ) {
+    const newArray = new Array(howManyNumbers).fill(null).map((el) => {
+      return (el = Math.floor(Math.random() * (max - min + 1) + min));
+    });
+    return newArray;
+  } else throw new Error('All variables must be numbers');
 }
 
 export function generateArrayOfArrays(
@@ -16,11 +24,21 @@ export function generateArrayOfArrays(
   min = 1,
   max = 10
 ) {
-  const arr = [];
-  for (let i = 0; i < howManyArrays; i++) {
-    arr[i] = [].concat(
-      generateArrayWithRandomNumbers(howManyNumbers, min, max)
-    );
-  }
-  return arr;
+  if (
+    typeof howManyNumbers === 'number' &&
+    typeof min === 'number' &&
+    typeof max === 'number' &&
+    typeof howManyArrays === 'number' &&
+    !isNaN(howManyNumbers) &&
+    !isNaN(min) &&
+    !isNaN(max) &&
+    !isNaN(howManyArrays)
+  ) {
+    const newArray = new Array(howManyArrays)
+      .fill(null)
+      .map(
+        (el) => (el = generateArrayWithRandomNumbers(howManyNumbers, min, max))
+      );
+    return newArray;
+  } else throw new Error('All variables must be numbers.');
 }
