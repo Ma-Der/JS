@@ -1,23 +1,16 @@
 export function findPhraseInArray(array, phrase) {
-  let phrases = array.filter((value) => {
-    if (value.toLowerCase().includes(phrase)) {
-      return value;
-    }
-  });
-  let indexArr = [];
-  array.map((value, i) => {
-    if (value.toLowerCase().includes(phrase)) {
-      if (i != null) {
-        indexArr.push(i);
+  if (Array.isArray(array) && typeof phrase === 'string') {
+    const search = array.reduce((acc, currentValue, index) => {
+      if (currentValue.toLowerCase().includes(phrase)) {
+        acc.push('Value: ' + currentValue + ' index: ' + index);
       }
-    }
-  });
-
-  let result = [phrases, indexArr].reduce((a, b) =>
-    a.map((val, i) => 'Phrase: ' + val + ', index: ' + b[i])
-  );
-
-  if (phrases && indexArr == '') {
-    console.log('No such phrase.');
-  } else console.log(result);
+      return acc;
+    }, []);
+    if (search.length == 0) {
+      return 'No such phrase.';
+    } else return search;
+  } else
+    throw new Error(
+      'First parameter must be an array, second needs to be string.'
+    );
 }

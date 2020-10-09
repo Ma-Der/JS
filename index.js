@@ -68,7 +68,7 @@ const inputData = 'Koniec astronomicznych wakacji stał się faktem ale to nie k
   ' '
 );
 
-findPhraseInArray(inputData, 'as');
+console.log(findPhraseInArray(inputData, 'st'));
 // end FIND-PHRASE-IN-ARRAYS assignment
 
 //start GENERATE-ARRAY-WITH-RANDOM-NUMBERS assignment
