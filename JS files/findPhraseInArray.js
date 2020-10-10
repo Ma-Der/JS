@@ -1,4 +1,6 @@
 export function findPhraseInArray(array, phrase) {
+  if (!phrase)
+    throw new Error("Can't find nothing, please tell me what I'm looking for.");
   if (Array.isArray(array) && typeof phrase === 'string') {
     const search = array.reduce((acc, currentValue, index) => {
       if (currentValue.toLowerCase().includes(phrase)) {

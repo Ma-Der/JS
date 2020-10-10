@@ -57,7 +57,7 @@ console.log(someFn(numbers, (el) => el === 1));
 
 // start FILTER-WITH assignment
 
-let result = filterWith(data, 484);
+let result = filterWith(data, 'schm');
 console.log(result);
 
 // end FILTER-WITH assignment
@@ -68,7 +68,7 @@ const inputData = 'Koniec astronomicznych wakacji stał się faktem ale to nie k
   ' '
 );
 
-console.log(findPhraseInArray(inputData, 'st'));
+console.log(findPhraseInArray(inputData, 'astr'));
 // end FIND-PHRASE-IN-ARRAYS assignment
 
 //start GENERATE-ARRAY-WITH-RANDOM-NUMBERS assignment
