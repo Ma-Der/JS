@@ -68,7 +68,7 @@ const inputData = 'Koniec astronomicznych wakacji stał się faktem ale to nie k
   ' '
 );
 
-console.log(findPhraseInArray(inputData, 'astr'));
+console.log(findPhraseInArray(inputData, 'ko'));
 // end FIND-PHRASE-IN-ARRAYS assignment
 
 //start GENERATE-ARRAY-WITH-RANDOM-NUMBERS assignment
@@ -103,7 +103,7 @@ console.log(isRectangularTriangle(3, 5, 4));
 
 console.log(mapFnR([5, 2, 1], (x) => x + x));
 
-console.log(filterFnR([1, 2, 3, 4], (x) => x > 2));
+console.log(filterFnR([1, 2, 3, 4], (x) => x < 4));
 
 console.log(everyFnR([1, 2, 3, 4], (x) => x > 0));
 console.log(someFnR([2, 3, 1], (x) => typeof x == 'string'));
@@ -116,7 +116,7 @@ const dataPagination = 'Lorem Ipsum has been the industrys standard dummy text e
   ' '
 );
 
-const settings = { paginateArrayIdx: 1, entriesOnPage: 3 };
+const settings = { paginateArrayIdx: 1, entriesOnPage: 4 };
 console.log(paginateArray(dataPagination, settings));
 
 // end PAGINATE-ARRAY assignment

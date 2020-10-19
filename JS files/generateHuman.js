@@ -1,11 +1,9 @@
 const surnames = 'Nowak Olejniczak Pająk Matuszewski Romanowski Kasprzak Świątek Wilczyński Ratajczak Kurowski Michalik Owczarek Orzechowski Grzelak Łukasik Olejnik Sobolewski Rogowski Mazurkiewicz Barański Bukowski Matusiak Sroka Kosiński Kędzierski Skowroński Marcinkowski Sobczyk Kozieł Marszałek Zych Chrzanowski Bednarski Rybak Lisowski Bednarz Janiszewski Pluta Kasprzyk Muszyński Kwiecień Kuczyński Świderski Paluch Morawski Białek Grzybowski Witek Turek Marczak Jędrzejewski Osiński Marzec Chmiel Czajka Kaczor Małek Kubicki Krzemiński Żukowski Piekarski Michałowski Szczęsny Szydłowski Biernacki Śliwa Janowski Stefaniak Lech Przybysz Lewicki Gołębiewski Murawski Dębski Kulesza Popławski Staniszewski'.split(
   ' '
 );
-
 const names = 'Ada, Adela, Adelajda, Adrianna, Agata, Agnieszka, Aldona, Aleksandra, Alicja, Alina, Amanda, Amelia, Anastazja, Andżelika, Aneta, Anita, Anna, Antonina, Adam, Adolf, Adrian, Albert, Aleksander, Aleksy, Alfred, Amadeusz, Andrzej, Antoni, Arkadiusz, Arnold, Artur'.split(
   ', '
 );
-
 const countries = ['PL', 'UK', 'USA'];
 
 export function generateHuman() {
