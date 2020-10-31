@@ -43,20 +43,15 @@ export function aggregateIntoChunks(array) {
 
   let cpyArr = [...array];
   let arrays = [];
-  let size=1;
-  let min = 4;
-  let max = 7;
+  let size = 0;
   let sum = 0;
   while(sum <= cpyArr.length) {
-    size = Math.min(max, Math.floor((Math.random() * max) + min));
+    size = randomNumber(4, 7);
       if(sum <= array.length) {
         arrays.push(Array(size)); 
         sum += size; 
-      }
-     // if(sum > array.length) {
-      //  sum = 0;
-     //   arrays.splice(0);
-     // }    
+      } 
+
   }
     return arrays;
 }
@@ -66,10 +61,10 @@ export function aggregateIntoChunks(array) {
   if(!Array.isArray(array)) throw new Error("Argument must be an array.");
   const cpyArr = [...array];
   let newArray = [];
-  let size = Math.min(7, Math.floor((Math.random() * 7) + 4));
+  let size = randomNumber(4, 7);
   while(cpyArr.length > 0) {
     newArray.push(cpyArr.splice(0, size));
-    size = Math.min(7, Math.floor((Math.random() * 7) + 4));
+    size = randomNumber(4, 7);
   }
   if(newArray[newArray.length - 1].length >= 4 && newArray[newArray.length - 1].length <=7) {
     return newArray;
