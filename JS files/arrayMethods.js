@@ -36,82 +36,62 @@ export function everyFn(array, callback) {
   if(!Array.isArray(array)) throw new Error("First argument must be an array.");
   if(!(typeof callback === 'function')) throw new Error("Second argument must be a function.");
 
-  let bool = true;
   for (let i = 0; i < array.length; i++) {
-    if (callback(array[i], i, array)) {
-      bool = true;
-    } else {
-      bool = false;
-      break;
+    if (!callback(array[i], i, array)) {
+      return false
     }
   }
-  return bool;
+  return true;
 }
 
 // reduceFn
 
 export function reduceFn(array, callback, initial) {
-  if (typeof callback === 'function' && Array.isArray(array)) {
+  if(!Array.isArray(array)) throw new Error("1st variable needs to be an array.");
+  if (!(typeof callback === 'function')) throw new Error("2nd variable must be a function.");
     let prevVal = null;
+
     if (typeof initial !== 'undefined') {
+
       prevVal = initial;
+
       if (array.length == 0) {
         return prevVal;
       }
+
       for (let i = 0; i < array.length; i++) {
         prevVal = callback(prevVal, array[i], i, array);
       }
       return prevVal;
+
     } else {
+
       if (array.length == 0) {
         throw TypeError('Array is empty.');
       }
-      for (let i = 0; i < array.length; i++) {
+
+      prevVal=array[0];
+
+      for (let i = 1; i < array.length; i++) {
         prevVal = callback(prevVal, array[i], i, array);
       }
+
       return prevVal;
     }
-  } else if (!Array.isArray(array) && !(callback === 'function')) {
-    throw new Error(
-      '1st variable needs to be an array, 2nd variable must be a function.'
-    );
-  }
 }
 
 // reduceRightFn
 
-export function reduceRightFn(array = array.reverse(), callback, initial) {
-
-  if (!(typeof callback === 'function')) throw new Error("Second argument must be a function.");
-  if(!Array.isArray(array)) throw new Error("First argument must be an array.");
-
-  let prevVal = null;
-  if (typeof initial !== 'undefined') {
-    prevVal = initial;
-    if (array.length == 0) {
-      return prevVal;
-    }
-    for (let i = 0; i < array.length; i++) {
-      prevVal = callback(prevVal, array[i], i, array);
-    }
-    return prevVal;
-  } else {
-    if (array.length == 0) {
-      throw TypeError('Array is empty.');
-    }
-    for (let i = 0; i < array.length; i++) {
-      prevVal = callback(prevVal, array[i], i, array);
-    }
-    return prevVal;
-  }
+export function reduceRightFn(array, callback, initial) {
+const reversedArray = array.reverse();
+return reduceFn(reversedArray, callback, initial);
 }
 
 // someFn
 
 export function someFn(array, callback) {
-
-  if (!(typeof callback === 'function')) throw new Error("Second argument must be a function.");
   if(!Array.isArray(array)) throw new Error("First argument must be an array.");
+  if (!(typeof callback === 'function')) throw new Error("Second argument must be a function.");
 
   for (let i = 0; i < array.length; i++) {
     if (callback(array[i], i, array)) {

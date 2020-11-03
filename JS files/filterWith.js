@@ -1,33 +1,33 @@
 export function filterWith(arr, filter) {
-  if (!Array.isArray(arr)) throw new Error('First argument must be an array.');
+  
+  if(!Array.isArray(arr)) throw new Error('First argument must be an array.');
   if (!(filter.toString().length > 2)) return [];
-  return arr.filter(function search(element) {
-    return Object.keys(element).some((key) => {
-      if (typeof element[key] === 'string') {
-        if (
-          element[key].toLowerCase().includes(filter.toString().toLowerCase())
-        ) {
-          return element[key];
+    
+  function search(element) {
+    if (typeof element === 'string') {
+     if (element.toLowerCase().includes(filter.toString().toLowerCase())) {
+        return (element);
+      }
+    }
+    if (typeof element === 'number') {
+         if (element.toString().includes(filter.toString().toLowerCase())) {
+          return (element);
         }
       }
-      if (typeof element[key] === 'number') {
-        if (element[key].toString().includes(filter.toString().toLowerCase())) {
-          return element[key];
+    if (element instanceof Array) {
+      return Object.keys(element).some((key) => {
+        if(element[key] instanceof Array) {
+           return filterWith(element[key], filter);
         }
-      }
-      if (Array.isArray(element[key])) {
-        return Object.keys(element[key]).some((secKey) => {
-          if (Array.isArray(element[secKey])) {
-            return filterWith(element[secKey], filter);
-          }
-          if (typeof element[key] === 'object') {
-            return search(element[key]);
-          }
-        });
-      }
-      if (typeof element[key] === 'object') {
-        return search(element[key]);
-      }
-    });
-  });
+        if(element[key] instanceof Object) {
+          return search(element[key]);
+        }
+         
+      });    
+    }
+    if (element instanceof Object) {
+      return Object.keys(element).some((key) => search(element[key]));
+    }
+  }
+  return arr.filter(search);
 }

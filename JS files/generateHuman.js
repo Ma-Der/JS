@@ -23,13 +23,14 @@ export function generateHuman() {
     return array[num];
   };
 
+  const name = getRandomElementFromArray(names)
+  const surname = getRandomElementFromArray(surnames)
+
   const human = {
     id: uuidv4(),
-    name: getRandomElementFromArray(names),
-    surname: getRandomElementFromArray(surnames),
-    get email() {
-      return `${this.name.toLowerCase()}.${this.surname.toLowerCase()}@mail.com`;
-    },
+    name,
+    surname,
+    email: `${name.toLowerCase()}.${surname.toLowerCase()}@mail.com`,
     age: randomNumber(18, 85),
     phoneNr: randomPhoneNumber([]),
     country: getRandomElementFromArray(countries),
