@@ -7,7 +7,7 @@ export function findPhraseInArray(array, phrase) {
 
   const found = array.reduce((acc, currentValue, index) => {
     if (currentValue.toLowerCase().includes(phrase.toLowerCase())) {
-      acc.push([`Value: ${currentValue}`, ` index: ${index}`]);
+      acc.push([[`Value:`, currentValue], [` index: `, index]]);
     }
     return acc;
   }, []);
